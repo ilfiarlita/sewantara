@@ -86,6 +86,7 @@ while ($row = mysqli_fetch_assoc($kategoriResult)) {
                         <p><strong>Pemilik:</strong> <?= $produk['pemilik']; ?></p>
                         <p><strong>Alamat:</strong> <?= $produk['alamat']; ?></p>
                         <p><strong>Status:</strong> <?= $produk['status']; ?></p>
+                        <p><strong>Periode:</strong> <?= $produk['periode']; ?></p>
                         <p class="harga">Rp<?= number_format($produk['harga'], 0, ',', '.'); ?></p>
                         <div class="produk-actions">
                             <a href="add_to_cart.php?id=<?= $produk['id']; ?>">
