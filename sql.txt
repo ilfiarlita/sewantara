@@ -1,0 +1,45 @@
+CREATE TABLE IF NOT EXISTS SEWANTARA (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    judul VARCHAR(255) NOT NULL,
+    pemilik VARCHAR(255) NOT NULL,
+    kategori VARCHAR(255) NOT NULL,
+    harga BIGINT NOT NULL,
+    periode VARCHAR(15) NOT NULL,
+    alamat VARCHAR(255) NOT NULL,
+    status CHAR(14) NOT NULL,
+    image VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS USERS (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS pesanan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_email VARCHAR(100),
+    produk_id INT,
+    tanggal_pesan DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('diproses', 'disewa', 'dibatalkan') DEFAULT 'diproses',
+    checkout_id INT
+);
+
+CREATE TABLE IF NOT EXISTS chat (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pengirim ENUM('user', 'admin') NOT NULL,
+    email_user VARCHAR(100),
+    pesan TEXT NOT NULL,
+    waktu TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status_baca ENUM('belum_dibaca','dibaca') DEFAULT 'belum_dibaca'
+);
+
+CREATE TABLE IF NOT EXISTS checkout (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email_user VARCHAR(100) NOT NULL,
+    total INT NOT NULL,
+    nama VARCHAR(100) NOT NULL,
+    kontak VARCHAR(50) NOT NULL,
+    catatan TEXT,
+    waktu TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
